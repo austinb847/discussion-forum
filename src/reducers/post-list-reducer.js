@@ -1,5 +1,5 @@
 export default (state = {}, action) => {
-  const { time, rating, poster, description, id } = action;
+  const { time, rating, poster, description, title, id } = action;
   switch(action.type) {
     case 'ADD_POST':
       return {
@@ -9,6 +9,7 @@ export default (state = {}, action) => {
           rating: rating,
           poster: poster,
           description: description,
+          title: title,
           id: id
         }
       };

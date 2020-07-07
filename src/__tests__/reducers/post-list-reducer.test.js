@@ -71,8 +71,6 @@ describe('postListReducer', () => {
         id: 1
       }
     })
-
-
   });
 });
 
