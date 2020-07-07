@@ -4,7 +4,7 @@ export default (state = {}, action) => {
     case 'ADD_POST':
       return {
         ...state,
-        id: {
+        [id]: {
           time: time,
           rating: rating,
           poster: poster,

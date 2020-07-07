@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import connect from "react-redux";
+import {connect} from "react-redux";
 
 function Post(props) {
   return (
     <React.Fragment>
-      <h3>{props.title}</h3><br/>
+      <h3>{props.title}</h3>
+      <h2>Posted By: {props.poster}</h2>
       <p>
         {props.description}
       </p>
-      <span>{props.rating}</span>
-      <p>{props.time}</p>
-      <button onClick={upVote}>Upvote</button><br/>
-      <button onClick={downVote}>DownVote</button><br/>
+      <span>Upvotes: {props.rating}</span>
+      <p>Posted At: {props.time.toString()}</p>
+      <button onClick={() => upVote(props)}>Upvote</button><br/>
+      <button onClick={() => downVote(props)}>DownVote</button><br/>
     </React.Fragment>
   )
 }
@@ -21,7 +22,7 @@ function upVote(props){
   const { dispatch } = props;
   const action = {
     type: "ADD_POST",
-    name: props.name,
+    poster: props.poster,
     id: props.id,
     rating: (props.rating + 1),
     time: props.time,

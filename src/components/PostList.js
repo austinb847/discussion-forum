@@ -1,7 +1,7 @@
 import React from "react";
 import Post from "./Post";
 import PropTypes from "prop-types";
-import connect from "react-redux";
+import {connect} from "react-redux";
 
 
 function PostList(props) {
