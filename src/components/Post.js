@@ -1,27 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
+import * as action from './../actions';
+import { LikeOutlined, DislikeOutlined } from '@ant-design/icons';
 
 function Post(props) {
+
   return (
     <React.Fragment>
-      <h3>{props.title}</h3>
-      <h2>Posted By: {props.poster}</h2>
-      <p>
-        {props.description}
-      </p>
-      <span>Upvotes: {props.rating}</span>
-      <p>Posted At: {props.time.toString()}</p>
-      <button onClick={() => upVote(props)}>Upvote</button><br/>
-      <button onClick={() => downVote(props)}>DownVote</button><br/>
+      <div class="post">
+        <h3>{props.title}</h3>
+        <h4>Posted By: {props.poster}</h4>
+        <p>
+          {props.description}
+        </p>
+        <span>Upvotes: {props.rating}</span>
+        <p>Posted At: {props.time.toString()}</p>
+        <LikeOutlined className = 'likeButton' onClick={() => upVote(props)}></LikeOutlined>
+        <DislikeOutlined className = 'likeButton' onClick={() => downVote(props)}></DislikeOutlined><br/>
+      </div>
     </React.Fragment>
   )
 }
 
 function upVote(props){
   const { dispatch } = props;
-  const action = {
-    type: "ADD_POST",
+  const post = {
     poster: props.poster,
     id: props.id,
     rating: (props.rating + 1),
@@ -29,21 +33,22 @@ function upVote(props){
     description: props.description,
     title: props.title
   }
-  dispatch(action);
+  const newAction = action.addPost(post);
+  dispatch(newAction);
 }
 
 function downVote(props){
   const { dispatch } = props;
-  const action = {
-    type: "ADD_POST",
-    name: props.name,
+  const post = {
+    poster: props.poster,
     id: props.id,
     rating: (props.rating - 1),
     time: props.time,
     description: props.description,
     title: props.title
   }
-  dispatch(action);
+  const newAction = action.addPost(post)
+  dispatch(newAction);
 }
 
 Post.propTypes = {

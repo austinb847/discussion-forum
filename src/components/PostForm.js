@@ -2,23 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { v4 } from 'uuid';
 import {connect} from 'react-redux';
+import * as action from './../actions';
 
 function PostForm(props) {
   return (
-    <React.Fragment>
-      <form onSubmit={(event) => newPost(event, props)}>
+    <React.Fragment >
+      <form class="newPostForm" onSubmit={(event) => newPost(event, props)}>
         <input
           type='text'
           name='title'
-          placeholder='title'/>
+          placeholder='title'/><br/>
+          <input
+            type='text'
+            name='poster'
+            placeholder='User name' /><br/>
         <textarea
           type='text'
           name='description'
-          placeholder='Enter Description'/>
-        <input
-          type='text'
-          name='poster'
-          placeholder='User name' />
+          placeholder='Enter Description'/><br/>
         <button type='submit'>Submit</button>
       </form>
     </React.Fragment>
@@ -28,8 +29,7 @@ function PostForm(props) {
 function newPost(event, props){
   event.preventDefault();
   const {dispatch} = props;
-  const action = {
-    type: "ADD_POST",
+  const post = {
     poster: event.target.poster.value,
     title: event.target.title.value,
     description: event.target.description.value,
@@ -37,7 +37,8 @@ function newPost(event, props){
     id: v4(),
     rating: 0
   }
-  dispatch(action);
+  const newAction = action.addPost(post)
+  dispatch(newAction);
 }
 
 PostForm.propTypes = {

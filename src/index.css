@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.post {
+  background-color: #b3b7bd;
+  border-radius: 15px;
+  border: 2px solid black;
+}
+
+.header {
+  text-align: center;
+}
+
+
+
+.likeButton {
+  font-size: 25px;
+}
+
+.likeButton:hover {
+  color: red;
+} 
+
+.likeButton:focus {
+  outline: none;
+}
+
+.newPostForm {
+  position: fixed;
+  top: 25vh;
+  left: 44vw;
+}

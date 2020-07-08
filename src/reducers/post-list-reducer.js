@@ -1,7 +1,9 @@
+import * as actionTypes from './../actions/ActionTypes';
+
 export default (state = {}, action) => {
   const { time, rating, poster, description, title, id } = action;
   switch(action.type) {
-    case 'ADD_POST':
+    case actionTypes.ADD_POST:
       return {
         ...state,
         [id]: {
@@ -13,7 +15,7 @@ export default (state = {}, action) => {
           id: id
         }
       };
-      case 'DELETE_POST':
+      case actionTypes.DELETE_POST:
         const newState = {...state};
         delete newState[id];
         return newState;

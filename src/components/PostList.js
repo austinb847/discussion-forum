@@ -19,7 +19,8 @@ function PostList(props) {
           rating = {post.rating}
           poster = {post.poster}
           description = {post.description}
-          time = {post.time}/>
+          time = {post.time}
+          key={post.id}/>
       })}
     </React.Fragment>
   )
