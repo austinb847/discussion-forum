@@ -2,7 +2,7 @@ import React from "react";
 import Post from "./Post";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-
+import * as action from './../actions';
 
 function PostList(props) {
 
@@ -12,19 +12,24 @@ function PostList(props) {
 
   return (
     <React.Fragment>
-      {array.map(post => {
-        return <Post
-          title = {post.title}
-          id = {post.id}
-          rating = {post.rating}
-          poster = {post.poster}
-          description = {post.description}
-          time = {post.time}
-          key={post.id}/>
-      })}
+      <div className="postList">
+        {array.map(post => {
+          return <Post
+            title = {post.title}
+            id = {post.id}
+            rating = {post.rating}
+            poster = {post.poster}
+            description = {post.description}
+            time = {post.time}
+            key={post.id}/>
+        })}
+        <button onClick={() => props.dispatch(action.toggleForm())}>New Post</button>
+      </div>
     </React.Fragment>
   )
 }
+
+
 
 PostList.propTypes = {
   masterPostList: PropTypes.object

@@ -20,4 +20,16 @@ export const toggleForm = () => ({
   type: 'TOGGLE_FORM'
 });
 
-//actions exported
+
+export const toggleDetail = (post) => {
+  const { description, poster, rating, time, title, id } = post;
+  return {
+    type: 'TOGGLE_DETAILS',
+    description: description,
+    poster: poster,
+    rating: rating,
+    time: time,
+    title: title,
+    id: id
+  }
+}

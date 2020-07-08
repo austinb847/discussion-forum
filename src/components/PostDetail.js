@@ -6,11 +6,9 @@ import { LikeOutlined, DislikeOutlined } from '@ant-design/icons';
 
 function Post(props) {
 
-  //onClick={dispatch(action.postDetails(somearguments))}
-
   return (
     <React.Fragment>
-      <div class="post"> 
+      <div class="post">
         <h3>{props.title}</h3>
         <h4>Posted By: {props.poster}</h4>
         <hr/>
@@ -23,7 +21,6 @@ function Post(props) {
         <LikeOutlined className = 'likeButton' onClick={() => upVote(props)}></LikeOutlined>
         <DislikeOutlined className = 'likeButton' onClick={() => downVote(props)}></DislikeOutlined><br/>
       </div>
-      <br></br>
     </React.Fragment>
   )
 }
@@ -66,10 +63,8 @@ Post.propTypes = {
 
 const mapGlobalStateToProps = state => {
   return{
-    masterPostList: state.masterPostList,
-    postDetailsPage: state.postDetailsPage
+    masterPostList: state.masterPostList
   }
 }
 
 export default connect(mapGlobalStateToProps)(Post);
-

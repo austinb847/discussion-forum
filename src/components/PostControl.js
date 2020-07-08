@@ -12,11 +12,20 @@ class PostControl extends React.Component
     this.state = {};
   }
 
-  render(){
+  render(props){
+    let formFragment;
+    if (this.props.formVisible === true)
+    {
+      formFragment = <PostForm />
+    }
+    else
+    {
+      formFragment = null;
+    }
     return(
       <React.Fragment>
         <PostList />
-        <PostForm />
+        {formFragment}
       </React.Fragment>
     )
   }

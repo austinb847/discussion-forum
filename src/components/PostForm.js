@@ -7,7 +7,7 @@ import * as action from './../actions';
 function PostForm(props) {
   return (
     <React.Fragment >
-      <form class="newPostForm" onSubmit={(event) => newPost(event, props)}>
+      <form className="newPostForm" onSubmit={(event) => newPost(event, props)}>
         <input
           type='text'
           name='title'
@@ -39,6 +39,7 @@ function newPost(event, props){
   }
   const newAction = action.addPost(post)
   dispatch(newAction);
+  dispatch(action.toggleForm());
 }
 
 PostForm.propTypes = {

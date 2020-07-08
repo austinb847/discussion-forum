@@ -38,6 +38,16 @@ code {
 
 .newPostForm {
   position: fixed;
-  top: 25vh;
-  left: 44vw;
+  top: 27vh;
+  left: 41vw;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 40px;
+  background-color: #698ab3;
+}
+
+.postList {
+  margin-left: 10vw;
+  margin-right: 10vw;
+  text-align: center;
 }
