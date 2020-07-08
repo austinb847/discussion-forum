@@ -5,9 +5,14 @@ import {connect} from "react-redux";
 
 
 function PostList(props) {
+
+  const array = Object.values(props.masterPostList).sort(function(a, b){
+    return b.rating - a.rating;
+  });
+
   return (
     <React.Fragment>
-      {Object.values(props.masterPostList).map(post => {
+      {array.map(post => {
         return <Post
           title = {post.title}
           id = {post.id}
@@ -31,3 +36,7 @@ const mapGlobalStateToProps = state => {
 }
 
 export default connect(mapGlobalStateToProps)(PostList);
+
+
+
+
