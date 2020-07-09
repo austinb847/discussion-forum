@@ -33,7 +33,6 @@ function toggleDetails(props){
   const id = props.id;
   const newAction = action.toggleDetail(id)
   dispatch(newAction);
-
 }
 
 function upVote(props){

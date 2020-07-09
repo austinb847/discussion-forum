@@ -21,7 +21,7 @@ import * as actionTypes from './../actions/ActionTypes';
 //   }
 // };
 
-export default (state = null, action) => {
+export default (state = {id: null}, action) => {
   console.log(action);
   const { id } = action;
   switch(action.type){

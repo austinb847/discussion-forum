@@ -15,6 +15,7 @@ export default (state = {}, action) => {
           id: id
         }
       };
+
       case actionTypes.DELETE_POST:
         const newState = {...state};
         delete newState[id];

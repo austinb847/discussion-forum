@@ -25,7 +25,7 @@ class PostControl extends React.Component
       formFragment = null;
     }
     console.log(this.props.detailsPageId);
-    if(this.props.detailsPageId){
+    if(this.props.detailsPageId.id != null){
       postDisplay = <PostDetail />
     }
     else

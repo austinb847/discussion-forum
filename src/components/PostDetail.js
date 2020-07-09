@@ -22,9 +22,17 @@ function Post(props) {
         <p>Posted At: {thisPost.time.toString()}</p>
         <LikeOutlined className = 'likeButton' onClick={() => upVote(thisPost, props)}></LikeOutlined>
         <DislikeOutlined className = 'likeButton' onClick={() => downVote(thisPost, props)}></DislikeOutlined><br/>
+        <button onClick={() => toggleDetails(props)}>Return to Posts</button>
       </div>
     </React.Fragment>
   )
+}
+
+function toggleDetails(props){
+  const {dispatch} = props;
+  const id = null;
+  const newAction = action.toggleDetail(id)
+  dispatch(newAction);
 }
 
 function upVote(thisPost, props){
@@ -56,11 +64,6 @@ function downVote(thisPost, props){
 }
 
 Post.propTypes = {
-  // id: PropTypes.string,
-  // rating: PropTypes.number,
-  // poster: PropTypes.string,
-  // description: PropTypes.string,
-  // time: PropTypes.object
   masterPostList: PropTypes.object,
   detailsPageId: PropTypes.object
 }
