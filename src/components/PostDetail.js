@@ -6,64 +6,69 @@ import { LikeOutlined, DislikeOutlined } from '@ant-design/icons';
 
 function Post(props) {
 
+  const thisPost = props.masterPostList[props.detailsPageId.id];
+
   return (
     <React.Fragment>
-      <div class="post">
-        <h3>{props.title}</h3>
-        <h4>Posted By: {props.poster}</h4>
+      <div className="post">
+        <h3>{thisPost.title}</h3>
+        <h4>Posted By: {thisPost.poster}</h4>
         <hr/>
         <p>
-          {props.description}
+          {thisPost.description}
         </p>
         <hr/>
-        <span>Upvotes: {props.rating}</span>
-        <p>Posted At: {props.time.toString()}</p>
-        <LikeOutlined className = 'likeButton' onClick={() => upVote(props)}></LikeOutlined>
-        <DislikeOutlined className = 'likeButton' onClick={() => downVote(props)}></DislikeOutlined><br/>
+        <span>Upvotes: {thisPost.rating}</span>
+        <p>Posted At: {thisPost.time.toString()}</p>
+        <LikeOutlined className = 'likeButton' onClick={() => upVote(thisPost, props)}></LikeOutlined>
+        <DislikeOutlined className = 'likeButton' onClick={() => downVote(thisPost, props)}></DislikeOutlined><br/>
       </div>
     </React.Fragment>
   )
 }
 
-function upVote(props){
+function upVote(thisPost, props){
   const { dispatch } = props;
   const post = {
-    poster: props.poster,
-    id: props.id,
-    rating: (props.rating + 1),
-    time: props.time,
-    description: props.description,
-    title: props.title
+    poster: thisPost.poster,
+    id: thisPost.id,
+    rating: (thisPost.rating + 1),
+    time: thisPost.time,
+    description: thisPost.description,
+    title: thisPost.title
   }
   const newAction = action.addPost(post);
   dispatch(newAction);
 }
 
-function downVote(props){
+function downVote(thisPost, props){
   const { dispatch } = props;
   const post = {
-    poster: props.poster,
-    id: props.id,
-    rating: (props.rating - 1),
-    time: props.time,
-    description: props.description,
-    title: props.title
+    poster: thisPost.poster,
+    id: thisPost.id,
+    rating: (thisPost.rating - 1),
+    time: thisPost.time,
+    description: thisPost.description,
+    title: thisPost.title
   }
-  const newAction = action.addPost(post)
+  const newAction = action.addPost(post);
   dispatch(newAction);
 }
 
 Post.propTypes = {
-  id: PropTypes.string,
-  rating: PropTypes.number,
-  poster: PropTypes.string,
-  description: PropTypes.string,
-  time: PropTypes.object
+  // id: PropTypes.string,
+  // rating: PropTypes.number,
+  // poster: PropTypes.string,
+  // description: PropTypes.string,
+  // time: PropTypes.object
+  masterPostList: PropTypes.object,
+  detailsPageId: PropTypes.object
 }
 
 const mapGlobalStateToProps = state => {
   return{
-    masterPostList: state.masterPostList
+    masterPostList: state.masterPostList,
+    detailsPageId: state.postDetailsPage
   }
 }
 

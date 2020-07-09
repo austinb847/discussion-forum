@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import PostList from './PostList';
 import PostForm from './PostForm';
+import PostDetail from './PostDetail';
 
 
 class PostControl extends React.Component
@@ -14,6 +15,7 @@ class PostControl extends React.Component
 
   render(props){
     let formFragment;
+    let postDisplay;
     if (this.props.formVisible === true)
     {
       formFragment = <PostForm />
@@ -22,9 +24,17 @@ class PostControl extends React.Component
     {
       formFragment = null;
     }
+    console.log(this.props.detailsPageId);
+    if(this.props.detailsPageId){
+      postDisplay = <PostDetail />
+    }
+    else
+    {
+      postDisplay = <PostList />
+    }
     return(
       <React.Fragment>
-        <PostList />
+        {postDisplay}
         {formFragment}
       </React.Fragment>
     )
@@ -33,13 +43,15 @@ class PostControl extends React.Component
 
 PostControl.propTypes = {
   masterPostList: PropTypes.object,
-  formVisible: PropTypes.bool
+  formVisible: PropTypes.bool,
+  detailsPageId: PropTypes.object
 };
 
 const mapGlobalStateToProps = state => {
   return{
   masterPostList: state.masterPostList,
-  formVisible: state.formVisible
+  formVisible: state.formVisible,
+  detailsPageId: state.postDetailsPage
 }}
 
 PostControl = connect(mapGlobalStateToProps)(PostControl);

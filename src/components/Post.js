@@ -10,7 +10,7 @@ function Post(props) {
 
   return (
     <React.Fragment>
-      <div class="post"> 
+      <div className="post" onClick={() => toggleDetails(props)}> 
         <h3>{props.title}</h3>
         <h4>Posted By: {props.poster}</h4>
         <hr/>
@@ -26,6 +26,14 @@ function Post(props) {
       <br></br>
     </React.Fragment>
   )
+}
+
+function toggleDetails(props){
+  const {dispatch} = props;
+  const id = props.id;
+  const newAction = action.toggleDetail(id)
+  dispatch(newAction);
+
 }
 
 function upVote(props){

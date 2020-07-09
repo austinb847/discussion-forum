@@ -6,6 +6,7 @@ import * as action from './../actions';
 
 function PostList(props) {
 
+
   const array = Object.values(props.masterPostList).sort(function(a, b){
     return b.rating - a.rating;
   });
@@ -21,7 +22,8 @@ function PostList(props) {
             poster = {post.poster}
             description = {post.description}
             time = {post.time}
-            key={post.id}/>
+            key={post.id}
+          />
         })}
         <button onClick={() => props.dispatch(action.toggleForm())}>New Post</button>
       </div>
